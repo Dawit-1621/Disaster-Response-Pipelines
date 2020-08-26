@@ -1,6 +1,6 @@
-<<<<<<< HEAD
+
 # Disaster Response Pipelines
-=======
+
 # Disaster Response Pipeline Project
 
 ### Instructions:
