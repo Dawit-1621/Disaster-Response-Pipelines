@@ -1,20 +1,3 @@
-"""
-Preprocessing of Data
-Project: Disaster Response Pipeline (Udacity - Data Science Nanodegree)
-
-Sample Script Syntax:
-
-> python process_data.py <path to messages csv file> <path to categories csv file> <path to sqllite  destination db>
-
-Sample Script Execution:
-> python process_data.py disaster_messages.csv disaster_categories.csv disaster_response_db.db
-
-Arguments Description:
-    1) Path to the CSV file containing messages (e.g. disaster_messages.csv)
-    2) Path to the CSV file containing categories (e.g. disaster_categories.csv)
-    3) Path to SQLite destination database (e.g. disaster_response_db.db)
-"""
-
 # Import all the relevant libraries
 import sys
 import numpy as np
@@ -85,9 +68,6 @@ def main():
         2) Clean Categories Data
         3) Save Data to SQLite Database
     """
-    
-    # Print the system arguments
-    # print(sys.argv)
     
     # Execute the ETL pipeline if the count of arguments is matching to 4
     if len(sys.argv) == 4:
