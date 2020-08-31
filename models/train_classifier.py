@@ -31,14 +31,14 @@ from sklearn.base import BaseEstimator,TransformerMixin
 
 def load_data_from_db(database_filepath):
     """
-    Load Data from the Database Function
+    Load Data from the Database 
     
     Arguments:
         database_filepath -> Path to SQLite destination database (e.g. disaster_response_db.db)
     Output:
         X -> a dataframe containing features
         Y -> a dataframe containing labels
-        category_names -> List of categories name
+        
     """
     
     engine = create_engine('sqlite:///' + database_filepath)
@@ -48,16 +48,13 @@ def load_data_from_db(database_filepath):
     #Remove child alone as it has all zeros only
     df = df.drop(['child_alone'],axis=1)
     
-    # Given value 2 in the related field are neglible so it could be error. Replacing 2 with 1 to consider it a valid response.
-    # Alternatively, we could have assumed it to be 0 also. In the absence of information I have gone with majority class.
     df['related']=df['related'].map(lambda x: 1 if x == 2 else x)
     
     X = df['message']
     y = df.iloc[:,4:]
     
-    #print(X)
-    #print(y.columns)
-    category_names = y.columns # This will be used for visualization purpose
+
+    category_names = y.columns 
     return X, y, category_names
 
 
@@ -144,15 +141,7 @@ def build_pipeline():
 def multioutput_fscore(y_true,y_pred,beta=1):
     """
     MultiOutput Fscore
-    
-    This is a performance metric of my own creation.
-    It is a sort of geometric mean of the fbeta_score, computed on each label.
-    
-    It is compatible with multi-label and multi-class problems.
-    It features some peculiarities (geometric mean, 100% removal...) to exclude
-    trivial solutions and deliberatly under-estimate a stangd fbeta_score average.
-    The aim is avoiding issues when dealing with multi-class/multi-label imbalanced cases.
-    
+
     It can be used as scorer for GridSearchCV:
         scorer = make_scorer(multioutput_fscore,beta=1)
         
