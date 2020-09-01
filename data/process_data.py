@@ -33,6 +33,7 @@ def clean_categories_data(df):
     # Split the categories
     categories = df['categories'].str.split(pat=';',expand=True)
     
+    df['related']=df['related'].map(lambda x: 1 if x == 2 else x)
     #Fix the categories columns name
     row = categories.iloc[[1]]
     category_colnames = [category_name.split('-')[0] for category_name in row.values[0]]

@@ -48,7 +48,7 @@ def load_data_from_db(database_filepath):
     #Remove child alone as it has all zeros only
     df = df.drop(['child_alone'],axis=1)
     
-    df['related']=df['related'].map(lambda x: 1 if x == 2 else x)
+    #df['related']=df['related'].map(lambda x: 1 if x == 2 else x)
     
     X = df['message']
     y = df.iloc[:,4:]
@@ -136,7 +136,15 @@ def build_pipeline():
         ('classifier', MultiOutputClassifier(AdaBoostClassifier()))
     ])
 
-    return pipeline
+    
+    parameters_grid = {'classifier__estimator__learning_rate': [0.01, 0.02, 0.05],
+                       'classifier__estimator__n_estimators': [10, 20, 40]}
+
+      
+
+    cv = GridSearchCV(pipeline, param_grid=parameters_grid, scoring='f1_micro', n_jobs=-1)
+    cv.fit(X_train, y_train)
+    return cv
 
 def multioutput_fscore(y_true,y_pred,beta=1):
     """
@@ -174,7 +182,7 @@ def multioutput_fscore(y_true,y_pred,beta=1):
     f1score = gmean(f1score)
     return f1score
 
-def evaluate_pipeline(pipeline, X_test, Y_test, category_names):
+def evaluate_pipeline(cv, X_test, Y_test, category_names):
     """
     Evaluate Model function
     
