@@ -43,4 +43,3 @@ Python web framework that provides useful tools and features that make creating 
 
 ## Licensing, Authors, Acknowledgements
 I Acknowledge the www.udacity.com and https://www.figure-eight.com/
-
