@@ -20,7 +20,7 @@
 3. Go to http://0.0.0.0:3001/
 
 ## Project Motivation
-This project is about disaster response. I’m interested to build this project because it show detail data engineering skills process. In this project there are three basic components of data engineering. The first one is ETL pipeline, it is a type of data integration process. The second, ML pipeline describes the ML process: writing code, releasing it to production, performing data extractions, creating training models, and tuning the algorithm. The last one, deployment process using Flask web application. The Flask provides tools, libraries and technologies that allow us to build a web application. To run the web app using Flask, importing the Flask module and creating a Flask web server from the Flask module.
+This project is about disaster response. I’m interested to build this project because it shows a detailed data engineering skills process. In this project, there are three basic components of data engineering. The first one is the ETL pipeline, which is a type of data integration process. The second, ML pipeline describes the ML process: writing code, releasing it to production, performing data extractions, creating training models, and tuning the algorithm. The last one is the deployment process using the Flask web application. The Flask provides tools, libraries, and technologies that allow us to build web applications. To run the web app using Flask, import the Flask module and create a Flask web server from the Flask module.
 ## Porject Descriptions 
 There are three components in this project. </br>
 **1. ETL(Extract, Transform, Load) Pipeline a data pipeline that:** 
